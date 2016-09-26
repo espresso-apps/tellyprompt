@@ -6,7 +6,11 @@
 const {app, BrowserWindow, ipcMain} = require("electron");
 const windowStateKeeper = require("electron-window-state");
 
+const smoothScrollClient = require("./lss.js");
+
 const baseHtmlDir = `file://${__dirname}/electron/`;
+
+var ssClient = new smoothScrollClient();
 
 var editorWindow = null;
 var presenterWindow = null;
@@ -69,6 +73,12 @@ ipcMain.on('show-settings', (event) => {
     settingsWindow.once('ready-to-show', () => {
         settingsWindow.show();
     });
+    settingsWindow.on("focus", () => {
+        ssClient.setEnabled(true);
+    });
+    //settingsWindow.on("blur", () => {
+    //    ssClient.setEnabled(false);
+    //});
     settingsWindow.on("closed", () => {
         settingsWindow = null;
     });
@@ -95,6 +105,12 @@ ipcMain.on('show-help', (event) => {
     helpWindow.once('ready-to-show', () => {
         helpWindow.show();
     });
+    helpWindow.on("focus", () => {
+        ssClient.setEnabled(true);
+    });
+    //helpWindow.on("blur", () => {
+    //    ssClient.setEnabled(false);
+    //});
     helpWindow.on("closed", () => {
         helpWindow = null;
     });
@@ -118,7 +134,7 @@ ipcMain.on('show-presenter', (event, settings) => {
         fullscreenable: true,
         backgroundColor: "#000",
         experimentalFeatures: true,
-        blinkFeatures: "CSSOMSmoothScroll",
+        disableBlinkFeatures: "CSSOMSmoothScroll",
         icon: windowIcon
     });
     presenterWindow.on("closed", () => {
@@ -127,6 +143,12 @@ ipcMain.on('show-presenter', (event, settings) => {
             displayWindow.close();
         }
     });
+    presenterWindow.on("focus", () => {
+        ssClient.setEnabled(true);
+    });
+    //presenterWindow.on("blur", () => {
+    //    ssClient.setEnabled(false);
+    //});
     presenterWindow.once("ready-to-show", () => {
         presenterWindow.show();
     });
@@ -215,6 +237,9 @@ app.on("ready", function() {
     });
     editorWindow.once('ready-to-show', () => {
         editorWindow.show();
+    });
+    editorWindow.on("focus", () => {
+        ssClient.setEnabled(true);
     });
     if(showDevTools) editorWindow.webContents.openDevTools();
     if(!showDevTools) editorWindow.setMenu(null);

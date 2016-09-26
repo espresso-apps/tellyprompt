@@ -31,9 +31,6 @@ body {
   top: 22px;
 }
 
-body.maximized {
-  padding-top: 58px;
-}
 .modal-open,
 .modal-open .modal {
   padding-right: 4px !important;
@@ -50,12 +47,17 @@ body.maximized {
   margin-bottom: 0;
   padding-top: 4px;
   padding-bottom: 4px;
-  /*float: left;*/
 }
 
 #btnMenu {
-    padding-top: 5px;
-    padding-bottom: 3px;
+    padding: 0px;
+    line-height: 16px;
+    font-size: 20px;
+    padding: 4px 8px;
+}
+#btnMenu .material-icons {
+  margin: 0px;
+  font-size: 24px;
 }
 
 .ui-toolbar .dropdown-menu {
@@ -64,7 +66,6 @@ body.maximized {
 .ui-toolbar > button {
   height: 30px;
   margin-top: 4px;
-  /*float: left;*/
   margin-right: 4px;
   margin-bottom: 4px;
 }

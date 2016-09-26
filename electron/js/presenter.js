@@ -355,19 +355,11 @@ var setScrolling = function(scroll) {
   if(!scroll) {
     isScrolling = false;
     //postMmsg({"cmd": "scroll", "value": isScrolling});
-    $("#btnStart .ui-button-text").html("Start");
-    $("#btnStart .ui-button-icon").removeClass("red").addClass("green");
-    pathData = $("#btnStart .ui-button-icon path").data("play");
+    $("#btnStart i.material-icons").html("play_arrow");
     $("#scrollDisabler").hide();
-    $("#btnStart .ui-button-icon path").attr("d", pathData);
   } else {
     isScrolling = true;
-    //postMsg({"cmd": "scrollSpeed", "value": scrollSpeed });
-    //postMsg({"cmd": "scroll", "value": isScrolling});
-    $("#btnStart .ui-button-text").html("Stop");
-    $("#btnStart .ui-button-icon").removeClass("green").addClass("red");
-    pathData = $("#btnStart .ui-button-icon path").data("pause");
-    $("#btnStart .ui-button-icon path").attr("d", pathData);
+    $("#btnStart .material-icons").html("pause");
     $("#scrollDisabler").toggle($("#chkDisableScroll").prop("checked"));
     lastScroll = Date.now();
     setTimeout(scrollFn, 10);

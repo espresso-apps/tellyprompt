@@ -3,7 +3,7 @@
 <html>
 <head>
   <title>Settings</title>
-  <link rel="stylesheet" href="lib/bootstrap-3.3.6/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
   <!-- link rel="stylesheet" href="css/editor.css" / -->
   <style rel="stylesheet" type="text/css">
     body, html {
@@ -228,7 +228,8 @@
     </table>
 
     <script>
-        window.$ = window.jQuery = require(`./lib/jquery-2.2.0.min.js`);
+        window.$ = window.jQuery = require('jquery');
+        const bootstrap = require('bootstrap');
         const electron = require('electron');
         const {ipcRenderer} = require('electron');
         $.fn.exists = function () {
