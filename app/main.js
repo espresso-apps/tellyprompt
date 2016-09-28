@@ -3,6 +3,8 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
+if(require('electron-squirrel-startup')) return;
+
 const {app, BrowserWindow, ipcMain} = require("electron");
 const windowStateKeeper = require("electron-window-state");
 

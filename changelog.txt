@@ -1,5 +1,6 @@
 v2.0.0
 - Conversion to Electron shell from Chrome App. Sorry, ChromeOS, but I don't have a device to develop on.
+- Added auto-update feature for Windows and Mac systems
 - Fixed a bug with opacity of center marker
 - Fixed position of center marker on presenter window
 
