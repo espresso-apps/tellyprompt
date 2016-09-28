@@ -13,51 +13,75 @@ var markerPosition = .5;
 $(document).ready(function() {
   if(window.localStorage.getItem('mirrorHoriz') !== null) {
     mirrorHoriz = varToBool(window.localStorage.getItem('mirrorHoriz'));
-    updateMirroring();
   }
   if(window.localStorage.getItem('mirrorVert') !== null) {
     mirrorVert = varToBool(window.localStorage.getItem('mirrorVert'));
-    updateMirroring();
   }
+  updateMirroring();
   if(window.localStorage.getItem('marginsHoriz') !== null) {
     $("#text").css("padding-left", window.localStorage.getItem('marginsHoriz') + "px")
         .css("padding-right", window.localStorage.getItem('marginsHoriz') + "px");
+  } else {
+    $("#text").css("padding-left", "80px")
+        .css("padding-right", "80px");
   }
   if(window.localStorage.getItem('contentText') !== null) {
     $("#content").html(window.localStorage.getItem('contentText'));
   }
   if(window.localStorage.getItem('textDirection') !== null) {
     $("#content").attr('dir', window.localStorage.getItem('textDirection'));
+  } else {
+    $("#content").attr('dir', "auto");
   }
   if(window.localStorage.getItem('displayFontSize') !== null) {
     $("#content").css('font-size', window.localStorage.getItem('displayFontSize') + "pt");
+  } else {
+    $("#content").css('font-size', "64pt");
   }
   if(window.localStorage.getItem('displayTextColor') !== null) {
     $("#content").css('color', window.localStorage.getItem('displayTextColor'));
+  } else {
+    $("#content").css('color', "#FFFFFF");
   }
   if(window.localStorage.getItem('displayBackgroundColor') !== null) {
     $("body").css('background-color', window.localStorage.getItem('displayBackgroundColor'));
     $("#topGradient").css('background', 'linear-gradient(to bottom, ' + toRgbaString(window.localStorage.getItem('displayBackgroundColor'), 1) + ' 0%,' + toRgbaString(window.localStorage.getItem('displayBackgroundColor'), 0) + ' 100%)');
     $("#bottomGradient").css('background', 'linear-gradient(to bottom, ' + toRgbaString(window.localStorage.getItem('displayBackgroundColor'), 0) + ' 0%,' + toRgbaString(window.localStorage.getItem('displayBackgroundColor'), 1) + ' 100%)');
+  } else {
+    $("body").css('background-color', "#000000");
+    $("#topGradient").css('background', 'linear-gradient(to bottom, ' + toRgbaString("#000000", 1) + ' 0%,' + toRgbaString("#000000", 0) + ' 100%)');
+    $("#bottomGradient").css('background', 'linear-gradient(to bottom, ' + toRgbaString("#000000", 0) + ' 0%,' + toRgbaString("#000000", 1) + ' 100%)');
   }
   
   if(window.localStorage.getItem('centerMarkerVisible') !== null) {
     $("#screenMarker").toggle(varToBool(window.localStorage.getItem('centerMarkerVisible')));
+  } else {
+    $("#screenMarker").toggle(true);
   }
   if(window.localStorage.getItem('centerMarkerOpacity') !== null) {
     $("#screenMarker").css('opacity', window.localStorage.getItem('centerMarkerOpacity') / 100.0);
+  } else {
+    $("#screenMarker").css('opacity', 1.0);
   }
   if(window.localStorage.getItem('centerMarkerPosition') !== null) {
     $("#screenMarker").css("top", window.localStorage.getItem('centerMarkerPosition') + "%");
     markerPosition = window.localStorage.getItem('centerMarkerPosition') / 100.0;
-    updateMargins();
+  } else {
+    $("#screenMarker").css("top", "50%");
+    markerPosition = 0.5;
   }
+  updateMargins();
   if(window.localStorage.getItem('centerMarkerLineThickness') !== null) {
     $("#screenMarker svg line").css("strokeWidth", window.localStorage.getItem('centerMarkerLineThickness'));
+  } else {
+    $("#screenMarker svg line").css("strokeWidth", 2.0);
   }
   if(window.localStorage.getItem('centerMarkerColor') !== null) {
     $("#screenMarker svg line").css("stroke", window.localStorage.getItem('centerMarkerColor'));
     $("#screenMarker svg path").css("fill", window.localStorage.getItem('centerMarkerColor'));
+  } else {
+    $("#screenMarker svg line").css("stroke", "#FFFFFF");
+    $("#screenMarker svg path").css("fill", "#FFFFFF");
   }
   
   window.addEventListener('storage', function(e) {

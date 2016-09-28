@@ -204,26 +204,37 @@ $(document).ready(function() {
     
     if(window.localStorage.getItem('textDirection') !== null) {
         $("#text-editor").attr('dir', window.localStorage.getItem('textDirection'));
+    } else {
+        $("#text-editor").attr('dir','auto');
     }
     if(window.localStorage.getItem('contentText') !== null) {
         $('#text-editor').val(window.localStorage.getItem('contentText'));
+    } else {
+        $('#text-editor').val("");
     }
     if(window.localStorage.getItem('editorFontSize') !== null) {
         var size = window.localStorage.getItem('editorFontSize');
-        $('#inputEditorTextSize').val(size);
         $("#text-editor").css("font-size", size + "pt");
+    } else {
+        $("#text-editor").css("font-size", "16pt");
     }
     
     if(window.localStorage.getItem('editorFileName') !== null) {
         editorFileName = window.localStorage.getItem('editorFileName');
+    } else {
+        editorFileName = null;
     }
     if(window.localStorage.getItem('editorFileId') !== null) {
         editorFileId = window.localStorage.getItem('editorFileId');
+    } else {
+        editorFileId = null;
     }
     if(window.localStorage.getItem('editorIsDirty') !== null) {
         var dirty = window.localStorage.getItem('editorIsDirty');
         dirty = (dirty === true || dirty === 1 || dirty === "true");
         setEditorDirty(dirty);
+    } else {
+        setEditorDirty(false);
     }
     
     window.addEventListener('storage', function(e) {
