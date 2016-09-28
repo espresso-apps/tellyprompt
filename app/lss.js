@@ -21,17 +21,18 @@ function lssClient() {
             socket.on("open", function() {
                 //console.log("connected to target");
                 self._ws = socket;
+                this._initialized = true;
                 //chrome.tabs.getSelected(null, function(tab) {
                 //    chrome.tabs.sendRequest(tab.id, {id: "refreshContent"});
                 //});
             });
             //console.log("web socket initialized");
-            this._initialized = true;
+            socket.on("error", function(msg) {
+                console.log("socket.onerror", msg);
+            });
             break;
             /*
-            socket.on("error", function(msg) {
-                console.log("socket.onerror");
-            });
+            
             socket.on("message", function(msg) {
                 console.log("socket.onmessage");
             });
