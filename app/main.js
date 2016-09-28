@@ -8,6 +8,8 @@ const windowStateKeeper = require("electron-window-state");
 
 const smoothScrollClient = require("./lss.js");
 
+const AutoUpdater = require("./auto-updater.js");
+
 const baseHtmlDir = `file://${__dirname}/electron/`;
 
 var ssClient = new smoothScrollClient();
@@ -20,11 +22,11 @@ var helpWindow = null;
 
 var showDevTools = false;
 
-var windowIcon = `file://${__dirname}/icons/icon_128.png`;
+//var windowIcon = `file://${__dirname}/icons/icon_128.png`;
 
-if(process.platform === 'win32') {
-    windowIcon = `file://${__dirname}/icons/tellyprompt.ico`;
-}
+//if(process.platform === 'win32') {
+//    windowIcon = `file://${__dirname}/icons/tellyprompt.ico`;
+//}
 
 for(var i = 0; i < process.argv.length; i++) {
     if(process.argv[i] === "--show-dev-tools") {
@@ -96,7 +98,7 @@ ipcMain.on('show-help', (event) => {
         useContentSize: true, 
         show: false, 
         title: "Help - TellyPrompt",
-        icon: windowIcon
+        //icon: windowIcon
     });
     
     if(showDevTools) helpWindow.webContents.openDevTools();
@@ -135,7 +137,7 @@ ipcMain.on('show-presenter', (event, settings) => {
         backgroundColor: "#000",
         experimentalFeatures: true,
         disableBlinkFeatures: "CSSOMSmoothScroll",
-        icon: windowIcon
+        //icon: windowIcon
     });
     presenterWindow.on("closed", () => {
         presenterWindow = null;
@@ -176,7 +178,7 @@ ipcMain.on('show-display', (event, settings) => {
         parent: presenterWindow.id,
         title: "Display - TellyPrompt",
         backgroundColor: (settings.backgroundColor ? settings.backgroundColor : "#000"),
-        icon: windowIcon
+        //icon: windowIcon
     });
     displayWindow.on("closed", () => {
         if(presenterWindow !== null) {
@@ -225,7 +227,8 @@ app.on("ready", function() {
         'height': editorWindowState.height, 
         'show': false,
         "title": "TellyPrompt",
-        "icon": windowIcon });
+        //"icon": windowIcon 
+    });
     editorWindow.on("closed", () => {
         editorWindow = null;
         if(presenterWindow !== null) {
@@ -244,6 +247,8 @@ app.on("ready", function() {
     if(showDevTools) editorWindow.webContents.openDevTools();
     if(!showDevTools) editorWindow.setMenu(null);
     editorWindow.loadURL(baseHtmlDir + "editor.html");
+
+    new AutoUpdater(editorWindow);
 
     editorWindowState.manage(editorWindow);
 });

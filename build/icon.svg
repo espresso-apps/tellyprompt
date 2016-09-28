@@ -16,9 +16,9 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
-   inkscape:export-filename="C:\Users\timj\OneDrive\Programming\TellyPrompt\images\icon_32.png"
-   inkscape:export-xdpi="60"
-   inkscape:export-ydpi="60"
+   inkscape:export-filename="C:\Users\timj\Documents\Programming\TellyPrompt.github\build\icons\16x16.png"
+   inkscape:export-xdpi="30"
+   inkscape:export-ydpi="30"
    sodipodi:docname="icon.svg">
   <defs
      id="defs4">
@@ -72,18 +72,18 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2"
-     inkscape:cx="-66.277423"
-     inkscape:cy="19.850115"
+     inkscape:zoom="12"
+     inkscape:cx="3.5167301"
+     inkscape:cy="23.183448"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="svg2"
      showgrid="false"
      units="px"
      inkscape:showpageshadow="false"
      borderlayer="true"
-     inkscape:window-width="1600"
-     inkscape:window-height="847"
-     inkscape:window-x="-8"
+     inkscape:window-width="1920"
+     inkscape:window-height="1027"
+     inkscape:window-x="1912"
      inkscape:window-y="-8"
      inkscape:window-maximized="1" />
   <metadata
@@ -99,7 +99,15 @@
     </rdf:RDF>
   </metadata>
   <g
-     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Text" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="Border" />
+  <g
+     inkscape:label="Background"
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(0,-1004.3622)"
@@ -248,5 +256,19 @@
        y="1009.3622"
        rx="3"
        ry="3" />
+    <rect
+       ry="3"
+       rx="3"
+       y="1009.3622"
+       x="5"
+       height="38"
+       width="38"
+       id="rect3378"
+       style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.50241548;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 5,1028.3622 38,0"
+       id="path3384"
+       inkscape:connector-curvature="0" />
   </g>
 </svg>

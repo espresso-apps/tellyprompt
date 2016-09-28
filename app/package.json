@@ -1,21 +1,16 @@
 {
   "name": "tellyprompt",
+  "displayName": "TellyPrompt",
   "version": "2.0.0",
+  "license": "MIT",
   "description": "Simple, free teleprompter. Paste text into editor window, and click \"Start Presenting\".",
-  "main": "../main.js",
+  "author": "Tim Jenkins <gototim@gmail.com>",
+  "private": true,
+  "main": "./main.js",
   "dependencies": {
     "electron-window-state": "^3.0.4",
     "bootstrap": "^3.3.7",
     "jquery": "^3.1.1",
     "ws": "^1.1.1"
-  },
-  "author": {
-    "name": "Tim Jenkins",
-    "email": "gototim@gmail.com"
-  },
-  "private": true,
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/akastormseeker/tellyprompt.git"
   }
 }
