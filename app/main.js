@@ -38,14 +38,25 @@ for(var i = 0; i < process.argv.length; i++) {
 
 app.on("window-all-closed", function() {
     // macOS app doesn't quit unless user explicitly quits from menu
-    if(process.platform != 'darwin') {
-        app.quit();
-    }
+    // except that we actually want to quit this app if the user closes all windows.
+    //if(process.platform != 'darwin') {
+    app.quit();
+    //}
 });
 
 ipcMain.on('close-this-window', (event) => {
     let wnd = BrowserWindow.fromWebContents(event.sender);
     wnd.close();
+});
+
+ipcMain.on('set-document-edited', (event, edited) => {
+    let wnd = BrowserWindow.fromWebContents(event.sender);
+    wnd.setDocumentEdited(edited);
+});
+
+ipcMain.on('set-represented-filename', (event, filename) => {
+    let wnd = BrowserWindow.fromWebContents(event.sender);
+    wnd.setRepresentedFilename((filename == null) ? "" : filename);
 });
 
 ipcMain.on('show-settings', (event) => {
@@ -247,7 +258,7 @@ app.on("ready", function() {
         ssClient.setEnabled(true);
     });
     if(showDevTools) editorWindow.webContents.openDevTools();
-    if(!showDevTools) editorWindow.setMenu(null);
+    if(!showDevTools && process.platform != 'darwin') editorWindow.setMenu(null);
     editorWindow.loadURL(baseHtmlDir + "editor.html");
 
     new AutoUpdater(editorWindow);

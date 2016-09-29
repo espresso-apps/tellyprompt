@@ -3,6 +3,10 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
+if(process.platform == 'darwin') {
+    $("#dialogActions div.win").hide();
+    $("#dialogActions div.mac").show();
+}
 
 function closeDialog() {
     ipcRenderer.send("close-this-window");
@@ -207,16 +211,16 @@ $(document).ready(function() {
     
     loadSettings();
 
-    $("#cancelButton").on("click", function() {
+    $("#cancelButtonWin, #cancelButtonMac").on("click", function() {
         closeDialog();
     });
 
-    $("#okButton").on("click", function() {
+    $("#okButtonWin, #okButtonMac").on("click", function() {
         saveChanges();
         closeDialog();
     });
 
-    $("#applyButton").on("click", function() {
+    $("#applyButtonWin").on("click", function() {
         saveChanges();
     });
 

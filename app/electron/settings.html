@@ -220,9 +220,15 @@
         </tr>
         <tr>
             <td id="dialogActions">
-                <button id="okButton" class="btn btn-primary">OK</button>
-                <button id="cancelButton" class="btn btn-default">Cancel</button>
-                <button id="applyButton" class="btn btn-default">Apply</button>
+                <div class="win">
+                    <button id="okButtonWin" class="btn btn-primary">OK</button>
+                    <button id="cancelButtonWin" class="btn btn-default">Cancel</button>
+                    <button id="applyButtonWin" class="btn btn-default">Apply</button>
+                </div>
+                <div class="mac" style="display: none;">
+                    <button id="cancelButtonMac" class="btn btn-default">Cancel</button>
+                    <button id="okButtonMac" class="btn btn-primary">OK</button>
+                </div>
             </td>
         </tr>
     </table>
@@ -236,7 +242,6 @@
             return this.length !== 0;
         };
     </script>
-    <script src="lib/bootstrap-3.3.6/js/bootstrap.js"></script>
     <script src="js/funcs.js"></script>
     <script src="js/displays.js"></script>
     <script src="js/settings.js"></script>

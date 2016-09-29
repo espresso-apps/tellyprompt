@@ -7,10 +7,14 @@ var count = 0;
 
 var editorIsDirty = false;
 var editorFileName = "untitled.txt";
-var editorFileId = null;
+var editorFileId = "";
 
 var helpWindow = null;
 var settingsWindow = null;
+
+if(process.platform == 'darwin') {
+    $(".hide-mac").hide();
+}
 
 var setEditorDirty = function(dirty) {
     dirty = !!dirty; // force boolean
@@ -23,7 +27,7 @@ var setEditorDirty = function(dirty) {
 
 var setEditorFile = function(filePath, fileName) {
     if(filePath === null) {
-        editorFileId = null;
+        editorFileId = "";
         editorFileName = (fileName === null ? "untitled.txt" : fileName);
     } else {
         editorFileId = filePath;
@@ -36,12 +40,15 @@ var setEditorFile = function(filePath, fileName) {
 }
 
 var updateWindowTitle = function() {
-    $("title").html("" + (editorIsDirty ? "&#x25cf;" : "") + editorFileName + " - Editor - TellyPrompt");
+    var isMac = (process.platform == 'darwin');
+    $("title").html("" + ((editorIsDirty && !isMac) ? "&#x25cf;" : "") + editorFileName + " - Editor - TellyPrompt");
+    ipcRenderer.send("set-document-edited", editorIsDirty);
+    ipcRenderer.send("set-represented-filename", editorFileId);
 }
 
 var newDocument = function() {
     $("#text-editor").val("").change();
-    setEditorFile(null, "untitled.txt");
+    setEditorFile("", "untitled.txt");
     setEditorDirty(false);
 };
 
@@ -222,12 +229,12 @@ $(document).ready(function() {
     if(window.localStorage.getItem('editorFileName') !== null) {
         editorFileName = window.localStorage.getItem('editorFileName');
     } else {
-        editorFileName = null;
+        editorFileName = "untitled.txt";
     }
     if(window.localStorage.getItem('editorFileId') !== null) {
         editorFileId = window.localStorage.getItem('editorFileId');
     } else {
-        editorFileId = null;
+        editorFileId = "";
     }
     if(window.localStorage.getItem('editorIsDirty') !== null) {
         var dirty = window.localStorage.getItem('editorIsDirty');
