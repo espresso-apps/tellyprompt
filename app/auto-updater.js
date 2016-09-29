@@ -3,7 +3,7 @@ const os = require("os");
 const fs = require("fs");
 const path = require("path");
 
-const UPDATE_SERVER_HOST = "updates-tellyprompt.herokuapp.com/";
+const UPDATE_SERVER_HOST = "tellyprompt-updates.espresso-apps.com/";
 
 function AppUpdater(window) {
     var self = this;

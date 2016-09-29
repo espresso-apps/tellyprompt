@@ -11,7 +11,7 @@
     "dist-linux": "build -l --x64 --ia32"
   },
   "build": {
-    "appId": "net.timothyjenkins.tellyprompt",
+    "appId": "com.espresso-apps.tellyprompt",
     "category": "public.app-category.productivity",
     "productName": "TellyPrompt",
     "dmg": {
@@ -30,8 +30,8 @@
       ]
     },
     "win": {
-      "iconUrl": "https://github.com/akastormseeker/tellyprompt/blob/master/build/icon.ico?raw=true",
-      "remoteReleases": "https://github.com/akastormseeker/tellyprompt",
+      "iconUrl": "https://github.com/espresso-apps/tellyprompt/blob/master/build/icon.ico?raw=true",
+      "remoteReleases": "https://github.com/espresso-apps/tellyprompt",
       "publish": [
         "github"
       ]
